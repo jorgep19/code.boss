@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# This Vagrantfile uses configuration v2
+Vagrant.configure(2) do |config|
+  # This Vagrantfile uses an ubuntu lucid 64 box as the base
+  config.vm.box = "f500/ubuntu-lucid64"
+
+  # forward request to my host machine's port 9000 
+  # to the port 8080 in the vm
+  config.vm.network :forwarded_port, host: 9000, guest: 80
+
+  # Prevent updates that havne't been requested manually
+  config.vm.box_check_update = false
+  
+  # fine tune virtual box resources for the vm
+  config.vm.provider "virtualbox" do |vb|
+    # Share only 2GB of memory with the vm
+    vb.memory = "2048"
+  end
+
+  # install apache using a shell provisioner
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update
+    sudo apt-get install -y apache2
+  SHELL
+end
