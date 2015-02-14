@@ -6,3 +6,5 @@ client/bower_components
 dist
 # local envs
 /server/config/local.env.js
+# local mongodb directory
+data/
