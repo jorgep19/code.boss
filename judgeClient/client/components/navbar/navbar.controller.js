@@ -4,8 +4,21 @@ angular.module('codeBossApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
       'title': 'Home',
-      'link': '/'
-    }];
+      'link': '/home'
+    },
+    {
+      'title': 'Problems',
+      'link': '/problems'
+    },
+    {
+      'title': 'Statistics',
+      'link': '/statiscs'
+    },
+    {
+      'title': 'Suggest a Problem',
+      'link': '/suggest_a_problem'
+    }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
