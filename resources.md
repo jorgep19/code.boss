@@ -14,5 +14,5 @@
 * charifmahmoudi, "charifmahmoudi / virtualbox", https://registry.hub.docker.com/u/charifmahmoudi/virtualbox/, Docket (as-of 13 Jul 2014)
 
 
-To DO:
+TO DO:
 * https://github.com/bmuschko/gradle-vagrant-plugin
