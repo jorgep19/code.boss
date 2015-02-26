@@ -6,12 +6,12 @@ Smith, J.P. "Title of Web Page", http://www.ubt.edu/cs/pubs/fds435.html, Univers
 Anon. "Title of Web Page", http://www.ubt.edu/cs/pubs/fds435.html, University of Bug Tussel (as-of 13 Nov 1999).
 
 
-* Anon. "Building Java Projects with Gradle", https://spring.io/guides/gs/gradle/ 
-* Anon. "Building a RESTful Web Service", https://spring.io/guides/gs/rest-service/   
-* Anon. "Vagrant-Binding", https://github.com/guigarage/vagrant-binding, Gui Garage  
-* Spanneberg, B.. "Automated virtual test-environments with Vagrant and Puppet", https://blog.codecentric.de/en/2012/02/automated-virtual-test-environments-with-vagrant-and-puppet/
+* Anon. "Building Java Projects with Gradle", https://spring.io/guides/gs/gradle/, Pivotal (as-of 13 Jan 2015)
+* Anon. "Building a RESTful Web Service", https://spring.io/guides/gs/rest-service/, Pivotal  (as-of 13 Jan 2015) 
+* Anon. "Vagrant-Binding", https://github.com/guigarage/vagrant-binding, Gui Garage (as-of 23 Mar 2013)
+* Spanneberg, B. "Automated virtual test-environments with Vagrant and Puppet", https://blog.codecentric.de/en/2012/02/automated-virtual-test-environments-with-vagrant-and-puppet/, CodeCentric (as-of 24 Feb 2012)
+* Anon. "Discover Vagrant Boxes", https://atlas.hashicorp.com/boxes/search, Atlas (as-of 12 Feb 2015) 
 
-* https://atlas.hashicorp.com/boxes/search - Catalog for base Vagrant Boxes
 * https://www.docker.com/tryit/#
 * http://docs.vagrantup.com/v2/docker/basics.html
 * http://docs.vagrantup.com/v2/provisioning/docker.html
