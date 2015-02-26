@@ -6,10 +6,10 @@ Smith, J.P. "Title of Web Page", http://www.ubt.edu/cs/pubs/fds435.html, Univers
 Anon. "Title of Web Page", http://www.ubt.edu/cs/pubs/fds435.html, University of Bug Tussel (as-of 13 Nov 1999).
 
 
-* Anon. "Building Java Projects with Gradle", (https://spring.io/guides/gs/gradle/) [https://spring.io/guides/gs/gradle/]   
-* Anon. "Building a RESTful Web Service", (https://spring.io/guides/gs/rest-service/) [https://spring.io/guides/gs/rest-service/]    
-* Anon. "Vagrant-Binding", (https://github.com/guigarage/vagrant-binding) [https://github.com/guigarage/vagrant-binding], Gui Garage  
-* Spanneberg, B.. "Automated virtual test-environments with Vagrant and Puppet", (https://blog.codecentric.de/en/2012/02/automated-virtual-test-environments-with-vagrant-and-puppet/) [https://blog.codecentric.de/en/2012/02/automated-virtual-test-environments-with-vagrant-and-puppet/]
+* Anon. "Building Java Projects with Gradle", https://spring.io/guides/gs/gradle/ 
+* Anon. "Building a RESTful Web Service", https://spring.io/guides/gs/rest-service/   
+* Anon. "Vagrant-Binding", https://github.com/guigarage/vagrant-binding, Gui Garage  
+* Spanneberg, B.. "Automated virtual test-environments with Vagrant and Puppet", https://blog.codecentric.de/en/2012/02/automated-virtual-test-environments-with-vagrant-and-puppet/
 
 * https://atlas.hashicorp.com/boxes/search - Catalog for base Vagrant Boxes
 * https://www.docker.com/tryit/#
