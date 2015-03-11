@@ -367,6 +367,7 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>',
           src: [
             'package.json',
+            'Procfile',
             'server/**/*'
           ]
         }]
@@ -389,7 +390,7 @@ module.exports = function (grunt) {
       },
       heroku: {
         options: {
-          remote: 'heroku',
+          remote: 'git@heroku.com:ufcodeboss.git',
           branch: 'master'
         }
       },
