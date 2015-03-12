@@ -12,11 +12,11 @@ angular.module('codeBossApp')
     },
     {
       'title': 'Statistics',
-      'link': '/statiscs'
+      'link': '/statistics'
     },
     {
       'title': 'Suggest a Problem',
-      'link': '/suggest_a_problem'
+      'link': '/suggest'
     }
     ];
 
