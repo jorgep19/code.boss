@@ -1,12 +1,32 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<header class="hero-unit" id="banner">
- <div class="container">
-   <h1>Problems</h1>
+<HTML>
+   <HEAD>
+      <TITLE>Problems</TITLE>
+   </HEAD>
+   <BODY>
+   	<div class="col-md-8" >
+    <header></header>
+    <h1>Problems</h1>
+    </header>
+    <table class = "table">
+    <tr>
+    <th>ID</th>
+    <th>Problem</th>
+    <th>Difficulty</th>
+    <th>Description</th>
+  </tr>
+  <tr ng-repeat="x in problems" >
+    <td>{{ x.id }}</td>
+    <td> <a href ng-click ="toggle(x.id)">{{ x.problem }} </a></td>
+    <td>{{x.difficulty}}</td>
+    <td>{{x.description}} </td>
+  </tr>
+</table>
+	
  </div>
-</header>
+ <div class= "col-md-4" ></div>
+
+   </BODY>
+</HTML>
 
 
- <div class="body-color" >
-   <div class="container">
-   </div>
-</div>
