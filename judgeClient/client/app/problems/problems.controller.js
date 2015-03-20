@@ -1,28 +1,32 @@
 'use strict';
 
 angular.module('codeBossApp')
-  .controller('ProblemsCtrl', function ($scope) {
+  .controller('ProblemsCtrl', function ($scope, Problem, $http, $location) {
 
-      $scope.problem1 = false;	
-      $scope.problem2 = false;	
-      $scope.problem2 = false;		
-      $scope.problems = [
-        {id:1 ,problem:'Find the area',difficulty: 'Easy', description: 'Find the area of a cirlce'},
-        {id:2 ,problem:'2D arrays', difficulty: 'Medium' ,description: 'create a million 2D arrays'},
-        {id:3 ,problem:'The best problem', difficulty: 'Medium', description: 'Solve this amazing problem and get a million dollars'}
-    ];
-       
-       $scope.toggle = function(a) {
-       	if( a == 1 ){
-       		$scope.problem1  = !scope.problem1;
-       }
-       else {
-       	console.log("nada");
-       }
-       
-   };
-    
 
-  
+  	  $scope.prblDescription = "hello";
+  	  $scope.clickCount = 0;	
 
+      $http.get('/api/problems').success(function(problems) {
+        $scope.problems = problems;
+      });
+
+     	$scope.problem1 = true;  
+
+       $scope.toggle = function(index) {
+       		if($scope.clickCount == 0){
+            $scope.problem1 = !$scope.problem1;
+          }
+
+          $scope.prblDescription = $scope.problems[index].description;
+          $scope.clickCount = $scope.clickCount +1;
+       	}
+
+        $scope.isActive = function(route) {
+        return route === $location.path();
+    };
+
+        $scope.solveProblem = '/solveProblem';
+       		
+       		
   });
