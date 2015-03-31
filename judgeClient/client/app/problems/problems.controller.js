@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('codeBossApp')
-  .controller('ProblemsCtrl', function ($scope, Problem, $http, $location) {
+  .controller('ProblemsCtrl', function ($scope, $http, $location) {
 
 
   	  $scope.prblDescription = "hello";
@@ -14,6 +14,8 @@ angular.module('codeBossApp')
      	$scope.problem1 = true;  
 
        $scope.toggle = function(index) {
+
+           console.log(index);
        		if($scope.clickCount == 0){
             $scope.problem1 = !$scope.problem1;
           }
@@ -27,6 +29,10 @@ angular.module('codeBossApp')
     };
 
         $scope.solveProblem = '/solveProblem';
+
+        $scope.solve = function(index) {
+          
+        }
        		
        		
   });
