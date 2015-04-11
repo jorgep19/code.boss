@@ -1,42 +1,88 @@
-.thing-form {
-  margin: 20px 0;
+
+@lightBlue:#ddf;
+@lightGreen:#dfd;
+@lightRed:#fdd;
+@defaultThemeColor:white;
+@borderColor:black - #222;
+@defaultShapesWidth:200px;
+@borderSize:@defaultShapesWidth * 0.1;
+
+.shape{
+    display:inline-block;
+    width:1200px;
+    height:300px;
+    background:rgb(224, 224, 224);
+    margin:10px;
+    vertical-align:middle;
+    text-align:center;
+    border:@borderSize solid @borderColor;
 }
 
-#banner {
-    border-bottom: none;
-    margin-top: -20px;
+.Round{
+    .RoundedShape(99999px);
 }
 
-
-#banner h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-}
-
-.hero-unit {
-    position: relative;
-    padding: 30px 15px;
-    color: #FF6633;
-    text-align: center;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #888888 ;
-}
-
-.body-color {
-    position: relative;
-    padding: 30px 15px;
-    color: #000000;
-    text-align: center;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #888888 ;
+.RoundedSquare(@radius:@defaultRadius){
+    .RoundedShape(@radius);
 }
 
 
+@defaultRadius:30px;
 
-.footer {
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 70px;
-    border-top: 1px solid #E5E5E5;
+.RoundedShape(@radius:@defaultRadius){
+
+    border-radius:@radius;
 }
+
+
+#shape1{
+    .RoundedSquare;
+    h1 {
+  color: rgb(32, 57, 219);
+  font-weight: 500;
+  font-size:60px;
+  
+  span {
+    font-weight: 600;
+    color: rgb(250, 83, 0) ;
+  }
+  
+  &:hover {
+     color: rgb(250, 83, 0);
+  }
+  
+  &:hover span {
+    color: rgb(32, 57, 219);
+        }
+    }
+}
+ 
+#shape2{
+    .RoundedSquare;
+}
+
+#shape3{
+    .RoundedSquare(60px);
+    h1 {
+    color:orange;
+    margin:auto;
+    line-height:100px;
+    vertical-align:middle;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

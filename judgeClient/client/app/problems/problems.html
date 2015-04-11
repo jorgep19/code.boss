@@ -4,19 +4,18 @@
       <TITLE>Problems</TITLE>
    </HEAD>
    <BODY>
+    <div class="problemShape" id="shape4">
    	<div class="col-md-4" >
-    <header></header>
-    <h1>Problems</h1>
+    <h1 align="left">Problems</h1>
     <input type="text" class="form-control" ng-model="searchtext" placeholder="Search...">
     <br>
     </header>
-    <table class = "table table-bordered">
+    <table class = "table table-bordered" id="customers">
     <tr>
     <th>Problem</th>
     <th>Difficulty</th>
   </tr>
-  <tr ng-repeat="x in problems | filter :searchtext"" >
-    
+  <tr class="alt" ng-repeat="x in problems | filter :searchtext">
     <td> <a href ng-click ="toggle($index)">{{ x.name }} </a></td>
     <td>{{x.difficulty}}</td>
   </tr>
@@ -24,15 +23,17 @@
  </div>
  <br>
  <br>
- <div ng-hide = "problem1" class= "col-md-6" >
+ <div ng-hide = "problem1" class= "col-md-6">
+  <div class="descriptionShape" id="description">
  	<h1>Problem Description</h1>
- 	{{prblDescription}}
+ 	<p>{{prblDescription}}</p>
   <br>
   <br>
   <button type="button" class="btn btn-success">
             <a href="/solveProblem">Solve</a>
   </div>
- 	</div>
+  </div>
+  </div>
    </BODY>
 </HTML>
 
