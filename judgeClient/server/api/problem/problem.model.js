@@ -8,7 +8,9 @@ var ProblemSchema = new Schema({
   active: Boolean,
   difficulty: String,
   description: String,
-  tags:[String]
+  example: String,
+  input: String,
+  output: String,
 });
 
 module.exports = mongoose.model('Problem', ProblemSchema);

@@ -4,35 +4,94 @@
       <TITLE>Suggest A Problem</TITLE>
    </HEAD>
    <BODY>
-   	<div class="col-md-5" >
-    <header></header>
-    <h1>Suggest A Problem</h1>
-    <form class="form-horizontal">
+    <div class="suggestProblemShape">
+      <div>
+    <h4>Suggest a Problem</h4>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="col-md-8">
+    <form name ="myForm"class="form-horizontal" novalidate >
   <div class="form-group">
-    <label for="ProblemName" class="col-sm-2 control-label">Name</label>
+    <label for="ProblemName"class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="ProblemName" placeholder="Problem Name">
+      <input type="text" class="form-control" name="name" id="ProblemName" placeholder="Problem Name" ng-model="name" required>
+      <span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+        <span ng-show="myForm.name.$error.required"> Name is required. 
+        </span>
+      </span>
     </div>
   </div>
+
   <div class="form-group">
-    <label for="Difficulty" class="col-sm-2 control-label">Difficulty</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="Difficulty" placeholder="Difficulty">
-    </div>
+      <label for="Difficulty" class="col-sm-2 control-label"> Difficulty</label>
+      <div class="col-sm-10">
+      <select class="form-control" name="difficulty" id="Difficulty" placeholder="difficulty" ng-model="difficulty" required>
+        <option>Easy</option>
+        <option>Medium</option>
+        <option>hard</option>
+      </select>
+       <span style="color:red" ng-show="myForm.difficulty.$dirty && myForm.difficulty.$invalid">
+        <span ng-show="myForm.difficulty.$error.required"> Difficulty is required. 
+        </span>
+      </span>
+
+  </div>
 </div>
+
     <div class="form-group">
     <label for="Description" class="col-sm-2 control-label">Description</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="Description" placeholder="Description">
+      <input type="text" class="form-control" name="description" id="Description" placeholder="Description" ng-model="description" required>
+      <span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">
+        <span ng-show="myForm.description.$error.required"> Description is required. 
+        </span>
+      </span>
     </div>
   </div>
+
+   <div class="form-group">
+    <label for="Input" class="col-sm-2 control-label">Input</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="input" id="Input" placeholder="Input" ng-model="input" required>
+      <span style="color:red" ng-show="myForm.input.$dirty && myForm.input.$invalid">
+        <span ng-show="myForm.input.$error.required"> Input is required. 
+        </span>
+      </span>
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label for="Example" class="col-sm-2 control-label">Example</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="example" id="Example" placeholder="Example" ng-model="example" required>
+      <span style="color:red" ng-show="myForm.example.$dirty && myForm.example.$invalid">
+        <span ng-show="myForm.difficulty.$error.required"> Example is required. 
+        </span>
+      </span>
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label for="Output" class="col-sm-2 control-label">Output</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="output" id="Output" placeholder="Output" ng-model="output" required>
+      <span style="color:red" ng-show="myForm.output.$dirty && myForm.output.$invalid">
+        <span ng-show="myForm.output.$error.required"> Output is required. 
+        </span>
+      </span>
+    </div>
+  </div>
+
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="button" class="btn btn-success">Submit</button>
+    <div class="col-sm-offset-2 col-sm-10" ng-init="disable=true">
+      <button ng-disabled="myForm.name.$invalid || myForm.difficulty.$invalid  || myForm.description.$invalid  || myForm.example.$invalid ||  myForm.input.$invalid || myForm.output.$invalid" ng-click ="submitButton(name,difficulty,description,example,input,output)" type="button" class="btn btn-success">Submit</button>
     </div>
   </div>
 </form>
-    </header>
+ </div>
  </div>
    </BODY>
 </HTML>

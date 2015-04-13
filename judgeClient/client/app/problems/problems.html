@@ -4,35 +4,36 @@
       <TITLE>Problems</TITLE>
    </HEAD>
    <BODY>
-    <div class="problemShape" id="shape4">
+    <div class="problemShape" id="description" ng-init="show=true">
    	<div class="col-md-4" >
     <h1 align="left">Problems</h1>
     <input type="text" class="form-control" ng-model="searchtext" placeholder="Search...">
     <br>
     </header>
-    <table class = "table table-bordered" id="customers">
+    <table class = "table table-hover">
     <tr>
     <th>Problem</th>
     <th>Difficulty</th>
   </tr>
-  <tr class="alt" ng-repeat="x in problems | filter :searchtext">
-    <td> <a href ng-click ="toggle($index)">{{ x.name }} </a></td>
+  <tr align="left" ng-show="{{show}}&&x.active" ng-repeat="x in problems | filter :searchtext">
+    <td> <a href ng-click ="toggle(x.description,x._id,x.example,x.input,x.output,x.active)">{{ x.name }} </a></td>
     <td>{{x.difficulty}}</td>
   </tr>
 </table>
  </div>
  <br>
  <br>
- <div ng-hide = "problem1" class= "col-md-6">
-  <div class="descriptionShape" id="description">
- 	<h1>Problem Description</h1>
- 	<p>{{prblDescription}}</p>
-  <br>
-  <br>
-  <button type="button" class="btn btn-success">
-            <a href="/solveProblem">Solve</a>
-  </div>
-  </div>
+   <div ng-hide = "problem1" class= "col-md-6">
+     	<h3 >Problem Description</h3>
+     	<p>{{prblDescription}}</p>
+      <h3>Example</h3>
+      <p>{{example}}</p>
+      <h3>Input</h3>
+      <p>{{theInput}}</p>
+      <h3>Output</h3>
+      <p>{{output}}</p>
+        <a class="btn btn-default" ng-click="solveProblem()">Solve</a>
+    </div>
   </div>
    </BODY>
 </HTML>
