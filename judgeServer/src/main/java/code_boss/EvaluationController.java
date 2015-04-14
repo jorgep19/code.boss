@@ -10,6 +10,12 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 public class EvaluationController {
 
+    private static final String CODE = "public class Main {\n" +
+            "    public static void main(String[] args) {\n" +
+            "        System.out.println(\"Hello World!\");\n" +
+            "    }\n" +
+            "}\n";
+
     private static final String template = "Evaluating solution for problem: %s";
     private final AtomicLong counter = new AtomicLong();
 
@@ -17,6 +23,8 @@ public class EvaluationController {
     public CodeEvaluation eval(@RequestParam(value="name", defaultValue="World") String name){
         //Logging
         System.out.println(String.format("Received request eval problem with name=%s", name));
+
+        new VMFactory().evaluateCode(CODE);
 
         return new CodeEvaluation(counter.incrementAndGet(),
                 String.format(template, name));
