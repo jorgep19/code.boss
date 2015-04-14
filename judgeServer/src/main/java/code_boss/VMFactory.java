@@ -4,13 +4,31 @@ import java.io.*;
 
 public class VMFactory {
 
-    public void evaluateCode(String code) {
-        compileTheCode(createFile(code));
+    private static final String CODE_DIR = "code";
+    private static final String MAIN = "Main";
+    private static final String JAVA_EXT = ".java";
+
+
+    public void evaluateCode(String user, String problemId, String code) {
+        StringBuilder sb = new StringBuilder();
+        createDirIfNeed(CODE_DIR);
+        sb.append(CODE_DIR);
+        sb.append("/");
+        createDirIfNeed(String.format("%s%s", sb.toString(), user));
+        sb.append(user);
+        sb.append("/");
+        createDirIfNeed(String.format("%s%s", sb.toString(), problemId));
+        sb.append(problemId);
+        sb.append("/");
+        sb.append(MAIN);
+        sb.append(JAVA_EXT);
+
+        compileTheCode(createFile(sb.toString(), code));
     }
 
-    private String createFile(String code) {
+    private String createFile(String solutionPath, String code) {
         try {
-            File file = new File("code/Main.java");
+            File file = new File(solutionPath);
             if(!file.exists()) {
                 if(file.createNewFile()) {
                     System.out.println("Created file");
@@ -29,6 +47,15 @@ public class VMFactory {
         }
 
         return null;
+    }
+
+    public void createDirIfNeed(String path) {
+        File file = new File(path);
+        if (!file.exists()) {
+            if(!file.mkdir()) {
+                System.out.println("Unable to create directory " + path);
+            }
+        }
     }
 
     private void compileTheCode(final String filePath) {
@@ -58,12 +85,14 @@ public class VMFactory {
     }
 
     private void runCode(String filePath) {
-        final String pathOfClassFile = filePath.substring(0, filePath.indexOf(".java"));
+        final String solutionPath = filePath.substring(0, filePath.indexOf(MAIN));
+        final File solutionDir = new File(solutionPath);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                ProcessBuilder pb = new ProcessBuilder("java", pathOfClassFile);
+                ProcessBuilder pb = new ProcessBuilder("java", MAIN);
+                pb.directory(solutionDir);
                 pb.redirectErrorStream(true);
 
                 try {
