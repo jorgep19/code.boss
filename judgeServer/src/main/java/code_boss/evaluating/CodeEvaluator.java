@@ -1,11 +1,20 @@
 package code_boss.evaluating;
 
+import code_boss.model.CodeEvaluation;
+import code_boss.model.EvaluationRun;
 import code_boss.model.UserSolution;
 
 import java.io.*;
 
 public abstract class CodeEvaluator {
-    private void runCode(final String compiledFilePath, final UserSolution solution) {
+
+    private ICodeEvaluationListener listener;
+
+    public CodeEvaluator(ICodeEvaluationListener listener) {
+        this.listener = listener;
+    }
+
+    public void runCode(final String compiledFilePath, final UserSolution solution) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -15,15 +24,7 @@ public abstract class CodeEvaluator {
 
                 EvaluationRun run = runWithinTimeout(pb, solution);
 
-                if (run == null) {
-                    // TODO server error
-                } else {
-                    if(solution.getExpectedOutput().equals(run.output)) {
-                        // TODO notify good
-                    } else {
-                        // TODO notify bad
-                    }
-                }
+                listener.notifyEvaluation(new CodeEvaluation(solution, run));
             }
         }).start();
     }
@@ -89,19 +90,5 @@ public abstract class CodeEvaluator {
         }
 
         return sb.toString();
-    }
-
-    private class EvaluationRun {
-        public int exitCode;
-        public boolean timedOut;
-        public boolean finished;
-        public String output;
-
-        public EvaluationRun() {
-            exitCode = 19;
-            timedOut = false;
-            finished = false;
-            output = "";
-        }
     }
 }

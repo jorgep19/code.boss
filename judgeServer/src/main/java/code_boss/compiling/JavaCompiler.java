@@ -6,7 +6,7 @@ public class JavaCompiler extends CodeCompiler {
     private static final String JAVA_COMPILE = "javac";
 
 
-    public JavaCompiler(CompilationResultListener listener) {
+    public JavaCompiler(ICompilationResultListener listener) {
         super(listener);
     }
 

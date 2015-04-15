@@ -32,8 +32,7 @@ public class EvaluationController {
 
         new VMFactory().evaluateCode("jorgep", "19",CODE);
 
-        return new CodeEvaluation(counter.incrementAndGet(),
-                String.format(template, name));
+        return new CodeEvaluation(null, null);
     }
 
 //    @RequestMapping(value = "/eval", method = RequestMethod.POST)

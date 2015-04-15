@@ -8,9 +8,9 @@ import java.io.*;
 public abstract class CodeCompiler {
     private static final String CODE_DIR = "code";
 
-    private CompilationResultListener listener;
+    private ICompilationResultListener listener;
 
-    public CodeCompiler(CompilationResultListener listener) {
+    public CodeCompiler(ICompilationResultListener listener) {
         this.listener = listener;
     }
 

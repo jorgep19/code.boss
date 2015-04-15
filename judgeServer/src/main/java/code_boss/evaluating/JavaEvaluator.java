@@ -8,6 +8,10 @@ public class JavaEvaluator extends CodeEvaluator {
     private static final String JAVA_EXEC = "java";
     private static final String JAVA_EXEC_ARGS = "Main";
 
+    public JavaEvaluator(ICodeEvaluationListener listener) {
+        super(listener);
+    }
+
     @Override
     protected String getExecutionCommand() {
         return JAVA_EXEC;
