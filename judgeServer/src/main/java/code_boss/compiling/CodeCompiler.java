@@ -31,7 +31,7 @@ public abstract class CodeCompiler {
 
     protected abstract String getDefaultFileName();
 
-    protected abstract String getFileExtention();
+    protected abstract String getFileExtension();
 
     protected abstract String getExecutionCommand();
 
@@ -47,7 +47,7 @@ public abstract class CodeCompiler {
         sb.append(solution.getProblemId());
         sb.append("/");
         sb.append(getDefaultFileName());
-        sb.append(getFileExtention());
+        sb.append(getFileExtension());
 
         return createFile(solution, sb.toString());
     }
