@@ -19,4 +19,16 @@ public class UserSolution {
     public String getCode() {
         return code;
     }
+
+    public int getTimeout() {
+        return timeout;
+    }
+
+    public String getExpectedOutput() {
+        return expectedOutput;
+    }
+
+    public String getTestInput() {
+        return testinput;
+    }
 }

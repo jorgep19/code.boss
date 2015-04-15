@@ -1,9 +1,11 @@
 package code_boss.evaluating;
 
+import code_boss.model.UserSolution;
+
 import java.io.*;
 
 public abstract class CodeEvaluator {
-    private void runCode(final String compiledFilePath, final String expectedOutput) {
+    private void runCode(final String compiledFilePath, final UserSolution solution) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -11,22 +13,16 @@ public abstract class CodeEvaluator {
                 pb.directory(getExecutionDirectory(compiledFilePath));
                 pb.redirectErrorStream(true);
 
-                try {
-                    // TODO time stamp
-                    Process solutionProcess = pb.start();
-                    solutionProcess.waitFor();
-                    // TODO time stamp
+                EvaluationRun run = runWithinTimeout(pb, solution);
 
-                    if(expectedOutput.equals(getProgramOutput(solutionProcess.getInputStream()))) {
+                if (run == null) {
+                    // TODO server error
+                } else {
+                    if(solution.getExpectedOutput().equals(run.output)) {
                         // TODO notify good
                     } else {
                         // TODO notify bad
                     }
-                } catch (IOException e) {
-
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
             }
         }).start();
@@ -37,6 +33,42 @@ public abstract class CodeEvaluator {
     protected abstract String getExecutionArgs();
 
     protected abstract File getExecutionDirectory(String compiledFilePath);
+
+    private EvaluationRun runWithinTimeout(ProcessBuilder pb, UserSolution solution) {
+        try {
+            EvaluationRun run = new EvaluationRun();
+            long end = System.currentTimeMillis() + solution.getTimeout();
+            Process solutionProcess = pb.start();
+
+            // give input to the solution
+            OutputStream os = solutionProcess.getOutputStream();
+            PrintStream printStream = new PrintStream(os);
+            printStream.print(solution.getTestInput());
+            printStream.close();
+
+            // run solition while tracking timeout
+            while (!run.finished && !run.timedOut) {
+                try {
+                    if (System.currentTimeMillis() >= end) {
+                        run.timedOut = true;
+                    }
+
+                    run.exitCode = solutionProcess.exitValue();
+                    run.finished = true;
+                } catch (IllegalThreadStateException e) {
+                    run.finished = false;
+                }
+            }
+
+            run.output = getProgramOutput(solutionProcess.getInputStream());
+
+            return run;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
     private String getProgramOutput(InputStream programOutput) {
         StringBuilder sb = new StringBuilder();
@@ -57,5 +89,19 @@ public abstract class CodeEvaluator {
         }
 
         return sb.toString();
+    }
+
+    private class EvaluationRun {
+        public int exitCode;
+        public boolean timedOut;
+        public boolean finished;
+        public String output;
+
+        public EvaluationRun() {
+            exitCode = 19;
+            timedOut = false;
+            finished = false;
+            output = "";
+        }
     }
 }

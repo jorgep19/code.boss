@@ -1,3 +1,6 @@
 code/
 build/
 .gradle/
+.idea/
+.vagrant/
+resources/
