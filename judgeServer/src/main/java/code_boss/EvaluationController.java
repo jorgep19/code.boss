@@ -1,9 +1,8 @@
 package code_boss;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import code_boss.model.CodeEvaluation;
+import code_boss.model.UserSolution;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -19,6 +18,13 @@ public class EvaluationController {
     private static final String template = "Evaluating solution for problem: %s";
     private final AtomicLong counter = new AtomicLong();
 
+///  request must have
+//   userId:
+//   problemId:
+//   testInput:
+//   expectedOutput:
+//   timeout:
+
     @RequestMapping(value = "/eval", method = RequestMethod.GET)
     public CodeEvaluation eval(@RequestParam(value="name", defaultValue="World") String name){
         //Logging
@@ -29,4 +35,15 @@ public class EvaluationController {
         return new CodeEvaluation(counter.incrementAndGet(),
                 String.format(template, name));
     }
+
+//    @RequestMapping(value = "/eval", method = RequestMethod.POST)
+//    public CodeEvaluation checkCodeSubmission(@RequestBody UserSolution solution) {
+//        //Logging
+//        System.out.println(String.format("Received request to evaluate ", solution));
+//
+//        new VMFactory().evaluateCode("jorgep", "19",CODE);
+//
+//        return new CodeEvaluation(counter.incrementAndGet(),
+//                String.format(template, name));
+//    }
 }

@@ -1,4 +1,4 @@
-package code_boss;
+package code_boss.model;
 
 public class CodeEvaluation {
     private final long id;
