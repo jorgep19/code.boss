@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 var ProblemSchema = new Schema({
   name: String,
   active: Boolean,
-  difficulty: String,
+  difficulty: Number,
   description: String,
   example: String,
   input: String,

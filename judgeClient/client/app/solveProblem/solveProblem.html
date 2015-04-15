@@ -6,7 +6,7 @@
    <BODY>
     <div class="solveProblemShape" id="solveDescription">
     <div class="col-md-6">
-    <h3><u>{{problemName}}</u></h2>
+    <h3>{{getCurrentUser().name}} is solving {{problemName}}</h2>
      <h3 >Problem Description</h3>
       <p>{{problemDescription}}</p>
       <h3 >Example</h3>
@@ -15,6 +15,7 @@
       <p>{{theInput}}</p>
       <h3>Output</h3>
       <p>{{output}}</p>
+
       </div>
       <div class="col-md-6">
         <br>
@@ -22,13 +23,14 @@
   <form role="form">
     <div class="form-group">
       <label for="comment">Input Code Here:</label>
-      <textarea class="form-control"  placeholder="public class Main {
+      <textarea ng-model="code" class="form-control"  placeholder="public class Main {
     public static void main(String[] args) {
   }
 }" rows="16" id="comment"></textarea>
     </div>
-    <button type="button" class="btn btn-success">Submit</button>
+    <button ng-click ="sendSubmission(code,getCurrentUser()._id,problemID, problemDifficulty,theInput,output)" type="button" class="btn btn-success">Submit</button>
   </form>
+  <p>{{outputAfter}}</p>
 </div>
 </div>
    </BODY>

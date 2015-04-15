@@ -12,6 +12,18 @@ angular.module('codeBossApp')
            $scope.problemInput=input;
            $scope.problemOutput=output;
 
+           if($scope.problemDifficulty=="Easy"){
+              $scope.problemDifficulty=1;
+            } else { 
+              if($scope.problemDifficulty=="Medium"){
+                $scope.problemDifficulty=2;
+              } else {
+                  $scope.problemDifficulty=3;
+              }
+            }
+              console.log($scope.problemDifficulty);
+        
+
            // Simple POST request example (passing data) :
 				$http.post('/api/problems', {name:$scope.problemName, active:false, difficulty:$scope.problemDifficulty,
 					description:$scope.problemDescription, example:$scope.problemExample, input:$scope.problemInput,
